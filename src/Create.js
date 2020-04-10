@@ -17,11 +17,11 @@ class Create extends React.Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    e.preventDefault();
+    //e.preventDefault();
   };
 
   handleSubmit = e => {
-    console.log(this.props);
+    // console.log(this.props);
     const { name, age, gender, city, state, country } = this.state;
     const userobj = {
       name: name,
@@ -33,61 +33,66 @@ class Create extends React.Component {
     };
     //console.log(userobj);
     this.props.addtolist(userobj);
+    //e.preventDefault();
   };
 
   render(props) {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h4> Personal Information </h4>
-        <lable>Enter Name:</lable>
-        <input
-          type="text"
-          class="fields"
-          name="name"
-          value={this.state.name}
-          onChange={this.handleChange}
-        />
+        <div className="per">
+          <h4> Personal Information </h4>
+          <lable>Enter Name:</lable>
+          <input
+            type="text"
+            class="fields"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+          <br />
+          <lable>Enter Age:</lable>
+          <input
+            type="text"
+            name="age"
+            value={this.state.age}
+            onChange={this.handleChange}
+          />
+          <br />
+          <lable>Enter gender:</lable>
+          <input
+            type="text"
+            name="gender"
+            value={this.state.gender}
+            onChange={this.handleChange}
+          />
+        </div>
         <br />
-        <lable>Enter Age:</lable>
-        <input
-          type="text"
-          name="age"
-          value={this.state.age}
-          onChange={this.handleChange}
-        />
-        <br />
-        <lable>Enter gender:</lable>
-        <input
-          type="text"
-          name="gender"
-          value={this.state.gender}
-          onChange={this.handleChange}
-        />
-        <br />
-        <h4>Address</h4>
-        <lable>Enter City :</lable>
-        <input
-          type="text"
-          name="city"
-          value={this.state.city}
-          onChange={this.handleChange}
-        />
-        <br />
-        <lable>Enter State :</lable>
-        <input
-          type="text"
-          name="state"
-          value={this.state.state}
-          onChange={this.handleChange}
-        />
-        <br />
-        <lable>Enter Country:</lable>
-        <input
-          type="text"
-          name="country"
-          value={this.state.country}
-          onChange={this.handleChange}
-        />
+        <div className="add">
+          <h4>Address</h4>
+          <lable>Enter City :</lable>
+          <input
+            type="text"
+            name="city"
+            value={this.state.city}
+            onChange={this.handleChange}
+          />
+          <br />
+          <lable>Enter State :</lable>
+          <input
+            type="text"
+            name="state"
+            value={this.state.state}
+            onChange={this.handleChange}
+          />
+          <br />
+          <lable>Enter Country:</lable>
+          <input
+            type="text"
+            name="country"
+            value={this.state.country}
+            onChange={this.handleChange}
+          />
+        </div>
         <br />
         <button type="submit" name="submit" class="submit">
           Submit

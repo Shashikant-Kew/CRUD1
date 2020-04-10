@@ -4,6 +4,7 @@ class Home extends React.Component {
     super(props);
   }
   render() {
+    console.log(this.props.userlist);
     return (
       <div>
         <h1>Home</h1>

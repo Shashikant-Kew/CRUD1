@@ -3,7 +3,7 @@ import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
 import Create from "./Create";
 import Search from "./Search";
 import Home from "./Home";
-import "../public/styles.css";
+import "./styles.css";
 
 class App extends Component {
   constructor(props) {
@@ -14,11 +14,10 @@ class App extends Component {
     this.addtolist = this.addtolist.bind(this);
   }
 
-  addtolist = userobj => {
-    this.setState({ users: this.users.concat(userobj) }, () =>
-      console.log(this.state.users, "addyolist")
-    );
-    //e.preventDefault();
+  addtolist = (userobj, e) => {
+    console.log(this.state.users);
+    this.setState({ users: this.state.users.push(userobj) });
+    e.preventDefault();
   };
 
   render() {
@@ -40,7 +39,13 @@ class App extends Component {
           </ul>
 
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/"
+              render={routeProps => (
+                <Home {...routeProps} userlist={this.state.users} />
+              )}
+            />
             <Route
               path="/create"
               render={routeProps => (
