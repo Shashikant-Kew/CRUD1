@@ -13,3 +13,12 @@ ul li {
   display: inline-block;
   margin: 10px;
 }
+
+table {
+  width: 100%;
+  border: solid;
+}
+
+td {
+  border-top: 1px solid #000 !important;
+}
