@@ -15,9 +15,11 @@ class App extends Component {
   }
 
   addtolist = (userobj, e) => {
+    let a = [...this.state.users];
+    a.push(userobj);
+    this.setState({ users: a });
     console.log(this.state.users);
-    this.setState({ users: this.state.users.push(userobj) });
-    e.preventDefault();
+    //e.preventDefault();
   };
 
   render() {
@@ -28,7 +30,7 @@ class App extends Component {
 
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/create">Create</Link>
@@ -41,7 +43,7 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path="/"
+              path="/home"
               render={routeProps => (
                 <Home {...routeProps} userlist={this.state.users} />
               )}

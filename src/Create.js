@@ -33,7 +33,7 @@ class Create extends React.Component {
     };
     //console.log(userobj);
     this.props.addtolist(userobj);
-    //e.preventDefault();
+    e.preventDefault();
   };
 
   render(props) {
