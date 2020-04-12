@@ -1,19 +1,18 @@
 import React from "react";
-class Create extends React.Component {
+class Update extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      age: 0,
-      gender: "",
-      city: "",
-      state: "",
-      country: "",
-      updateflag: false
+      name: props.SelectedUser.name,
+      age: props.SelectedUser.age,
+      gender: props.SelectedUser.gender,
+      city: props.SelectedUser.city,
+      state: props.SelectedUser.state,
+      country: props.SelectedUser.country
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleupdate = this.handleupdate.bind(this);
   }
 
   handleChange = e => {
@@ -21,7 +20,7 @@ class Create extends React.Component {
     //e.preventDefault();
   };
 
-  handleSubmit = e => {
+  handleupdate = e => {
     // console.log(this.props);
     const { name, age, gender, city, state, country } = this.state;
     const userobj = {
@@ -32,8 +31,8 @@ class Create extends React.Component {
       state: state,
       country: country
     };
-    //console.log(userobj);
-    this.props.addtolist(userobj);
+
+    this.props.updateuser(userobj);
     e.preventDefault();
   };
 
@@ -95,8 +94,13 @@ class Create extends React.Component {
           />
         </div>
         <br />
-        <button type="submit" name="submit" className="submit">
-          Submit
+        <button
+          type="update"
+          onClick={this.handleupdate}
+          name="update"
+          className="update"
+        >
+          Update
         </button>
         <button type="reset" name="reset" className="reset">
           Reset
@@ -105,4 +109,4 @@ class Create extends React.Component {
     );
   }
 }
-export default Create;
+export default Update;

@@ -1,11 +1,28 @@
 import React from "react";
+import Update from "./Update";
 class Home extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      updateflag: false,
+      selecteduser: ""
+    };
+  }
+
+  handleupdate = n => {
+    console.log(n);
+    this.setState({ updateflag: true, selecteduser: n });
+  };
+
   render() {
-    let [users] = this.props.userlist;
-    console.log(users);
+    if (this.state.updateflag) {
+      return (
+        <Update
+          SelectedUser={this.state.selecteduser}
+          updateuser={this.props.updateuser}
+        />
+      );
+    }
     if (this.props.userlist) {
       return (
         <div>
@@ -29,7 +46,9 @@ class Home extends React.Component {
                 <td>{n.state}</td>
                 <td>{n.country}</td>
                 <td>
-                  <button name="update">Update</button>
+                  <button name="update" onClick={() => this.handleupdate(n)}>
+                    Update
+                  </button>
                 </td>
                 <td>
                   <button name="delete">Delete</button>

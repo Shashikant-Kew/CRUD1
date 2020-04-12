@@ -12,14 +12,26 @@ class App extends Component {
       users: []
     };
     this.addtolist = this.addtolist.bind(this);
+    this.updateuser = this.updateuser.bind(this);
   }
 
   addtolist = (userobj, e) => {
     let a = [...this.state.users];
     a.push(userobj);
-    this.setState({ users: a });
-    console.log(this.state.users);
+    this.setState({ users: a }); 
+    //console.log(this.state.users);
     //e.preventDefault();
+  };
+
+  updateuser = updateuser => {
+    console.log(typeof updateuser.name);
+    let a = [...this.state.users];
+    a.map((i, updateuser) => {
+      if (i.name == updateuser.name) {
+      } else {
+      }
+      console.log(typeof i.name);
+    });
   };
 
   render() {
@@ -45,7 +57,11 @@ class App extends Component {
               exact
               path="/home"
               render={routeProps => (
-                <Home {...routeProps} userlist={this.state.users} />
+                <Home
+                  {...routeProps}
+                  userlist={this.state.users}
+                  updateuser={this.updateuser}
+                />
               )}
             />
             <Route
