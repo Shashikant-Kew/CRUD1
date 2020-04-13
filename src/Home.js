@@ -51,7 +51,12 @@ class Home extends React.Component {
                   </button>
                 </td>
                 <td>
-                  <button name="delete">Delete</button>
+                  <button
+                    name="delete"
+                    onClick={() => this.props.deleteuser(n)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

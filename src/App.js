@@ -13,25 +13,32 @@ class App extends Component {
     };
     this.addtolist = this.addtolist.bind(this);
     this.updateuser = this.updateuser.bind(this);
+    this.deleteuser = this.deleteuser.bind(this);
   }
 
   addtolist = (userobj, e) => {
     let a = [...this.state.users];
     a.push(userobj);
-    this.setState({ users: a }); 
+    this.setState({ users: a });
     //console.log(this.state.users);
     //e.preventDefault();
   };
 
-  updateuser = updateuser => {
-    console.log(typeof updateuser.name);
+  updateuser = upuser => {
     let a = [...this.state.users];
-    a.map((i, updateuser) => {
-      if (i.name == updateuser.name) {
-      } else {
-      }
-      console.log(typeof i.name);
-    });
+    let ind = a.findIndex(i => i.name === upuser.name);
+    a[ind] = upuser;
+    this.setState({ users: a });
+    console.log("index", ind);
+  };
+
+  deleteuser = user => {
+    let a = [...this.state.users];
+    let ind = a.findIndex(i => i.name === user.name);
+
+    a.splice(ind, 1);
+    console.log("Deleted");
+    this.setState({ users: a });
   };
 
   render() {
@@ -61,6 +68,7 @@ class App extends Component {
                   {...routeProps}
                   userlist={this.state.users}
                   updateuser={this.updateuser}
+                  deleteuser={this.deleteuser}
                 />
               )}
             />
