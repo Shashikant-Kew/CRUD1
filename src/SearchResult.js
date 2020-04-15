@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-const SearchResult = ({ Selectcity, Selectstate, Selectcountry }) => (
+const SearchResult = props => (
   <div>
     <table>
       <tr>
@@ -11,7 +11,7 @@ const SearchResult = ({ Selectcity, Selectstate, Selectcountry }) => (
         <th>State</th>
         <th>Country</th>
       </tr>
-      {this.props.userlist.map(n => (
+      {props.userlist.map(n => (
         <tr>
           <td>{n.name}</td>
           <td>{n.age}</td>

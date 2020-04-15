@@ -8,9 +8,10 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Selectcity: null,
-      Selectstate: null,
-      Selectcountry: null
+      Selectcity: "",
+      Selectstate: "",
+      Selectcountry: "",
+      updateduserlist: []
     };
     // this.handleChange = this.handleChange.bind(this);
   }
@@ -24,9 +25,19 @@ class Search extends React.Component {
   };
 
   SelectedCity = Selectcity => {
-    //console.log("sdfs");
     this.setState({ Selectcity });
   };
+
+  componentDidMount() {
+    const updatedusers = this.props.userlist.filter(
+      a =>
+        a.city == this.state.SelectedCity ||
+        a.state == this.state.SelectedState ||
+        a.country == this.state.SelectedCountry
+    );
+    console.log(updatedusers);
+    this.setState({ updateduserlist: updatedusers });
+  }
 
   render() {
     return (
@@ -58,7 +69,7 @@ class Search extends React.Component {
             Selectcity={this.state.Selectcity}
             Selectstate={this.state.Selectstate}
             Selectcountry={this.state.Selectcountry}
-            userlist={this.props.userlist}
+            userlist={this.state.updateduserlist}
           />
         </div>
       </div>
