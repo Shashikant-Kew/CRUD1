@@ -79,7 +79,12 @@ class App extends Component {
                 <Create {...routeProps} addtolist={this.addtolist} />
               )}
             />
-            <Route path="/search" component={Search} />
+            <Route
+              path="/search"
+              render={routeProps => (
+                <Search {...routeProps} userlist={this.state.users} />
+              )}
+            />
           </Switch>
         </div>
       </Router>
