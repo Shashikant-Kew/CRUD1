@@ -1,0 +1,25 @@
+componentDidMount()
+{
+ this.setState({ updateduserlist: updatedusers });
+}
+
+  componentDidUpdate() {
+    console.log("dsf", this.state.Selectedcity);
+    if (
+      this.state.Selectedcity ||
+      this.state.Selectedctate ||
+      this.state.Selectedcountry
+    ) {
+      const updatedusers = this.props.userlist.filter(
+        a =>
+          a.city == this.state.Selectedcity ||
+          a.state == this.state.Selectedctate ||
+          a.country == this.state.Selectedcountry
+      );
+      //  console.log(updatedusers);
+      this.setState({ updateduserlist: updatedusers });
+    } else {
+      const updatedusers = [];
+       this.setState({ updateduserlist: updatedusers });
+    }
+  }
