@@ -45,18 +45,23 @@ class Search extends React.Component {
       this.setState({ updateduserlist: updatedusers });
     }
 
-    if (this.state.Selectstate) {
-      updatedusers = this.props.userlist.filter(
-        a => a.state === this.state.Selectstate
-      );
+    if (prevState.Selectstate !== this.state.Selectstate) {
+      if (this.state.Selectstate) {
+        updatedusers = this.props.userlist.filter(
+          a => a.state === this.state.Selectstate
+        );
+      }
+      this.setState({ updateduserlist: updatedusers });
     }
 
-    if (this.state.Selectcountry) {
-      updatedusers = this.props.userlist.filter(
-        a => a.country === this.state.Selectcountry
-      );
+    if (prevState.Selectcountry !== this.state.Selectcountry) {
+      if (this.state.Selectcountry) {
+        updatedusers = this.props.userlist.filter(
+          a => a.country === this.state.Selectcountry
+        );
+      }
+      this.setState({ updateduserlist: updatedusers });
     }
-
     //  console.log(updatedusers);
   }
 
