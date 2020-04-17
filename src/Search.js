@@ -25,18 +25,39 @@ class Search extends React.Component {
   };
 
   SelectedCity = Selectcity => {
+    console.log(Selectcity, "In Search");
     this.setState({ Selectcity });
   };
 
-  componentDidMount() {
-    const updatedusers = this.props.userlist.filter(
-      a =>
-        a.city == this.state.SelectedCity ||
-        a.state == this.state.SelectedState ||
-        a.country == this.state.SelectedCountry
-    );
-    console.log(updatedusers);
-    this.setState({ updateduserlist: updatedusers });
+  // componentDidMount() {
+  //   this.setState({ updateduserlist: updatedusers });
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    //console.log("dsf", this.state.Selectcity);
+    let updatedusers = [...this.props.userlist];
+    if (prevState.Selectcity !== this.state.Selectcity) {
+      if (this.state.Selectcity) {
+        updatedusers = this.props.userlist.filter(
+          a => a.city === this.state.Selectcity
+        );
+      }
+      this.setState({ updateduserlist: updatedusers });
+    }
+
+    if (this.state.Selectstate) {
+      updatedusers = this.props.userlist.filter(
+        a => a.state === this.state.Selectstate
+      );
+    }
+
+    if (this.state.Selectcountry) {
+      updatedusers = this.props.userlist.filter(
+        a => a.country === this.state.Selectcountry
+      );
+    }
+
+    //  console.log(updatedusers);
   }
 
   render() {

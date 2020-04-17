@@ -21,6 +21,7 @@ class CitySearch extends React.Component {
 
   handleChange = selectedOption => {
     this.setState({ selectedOption: selectedOption.value }, () => {
+      console.log(this.state.selectedOption, "In citysearch");
       this.props.SelectedCity(this.state.selectedOption);
     });
   };
