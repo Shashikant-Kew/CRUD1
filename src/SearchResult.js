@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 const SearchResult = props => (
   <div>
-    <table>
+    <table class="searchtab">
       <tr>
         <th>Name</th>
         <th>Age</th>

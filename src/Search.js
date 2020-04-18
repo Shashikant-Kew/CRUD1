@@ -69,7 +69,7 @@ class Search extends React.Component {
     return (
       <div>
         <h2>Search</h2>
-        <table>
+        <table class="listtab">
           <tr>
             <th>City</th>
             <th>State</th>

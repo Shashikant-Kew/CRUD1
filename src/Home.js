@@ -26,7 +26,7 @@ class Home extends React.Component {
     if (this.props.userlist) {
       return (
         <div>
-          <table>
+          <table class="hometab">
             <tr>
               <th>Name</th>
               <th>Age</th>
